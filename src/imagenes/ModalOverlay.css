@@ -1,0 +1,33 @@
+/* Efecto de desenfoque y animación para el fondo de la ventana modal */
+div[style*="position: fixed"] {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  animation: fadeInBg 0.25s ease-out forwards;
+}
+
+/* Animación de entrada para el contenedor blanco del formulario */
+div[style*="max-width: 400px"] {
+  animation: slideInModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animación para suavizar la aparición del fondo oscuro */
+@keyframes fadeInBg {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Animación para que la modal suba con un efecto elástico y elegante */
+@keyframes slideInModal {
+  from {
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

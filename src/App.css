@@ -1,0 +1,584 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #070707;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #769097;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Transiciones suaves para los enlaces */
+.transition-all {
+  transition: all 1s ease-in-out;
+  border-radius: 12px;
+}
+
+/* Efecto al pasar el mouse por los links inactivos */
+.hover-link:hover {
+  background-color: rgba(64, 236, 248, 0.726) !important;
+  color: #fff !important;
+  transform: translateX(5px);
+}
+
+/* Estilo para los iconos */
+.nav-link i {
+  width: 24px;
+  text-align: center;
+}
+
+/* Animación de carga para el contenido */
+main {
+  animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Asegurar que el sidebar no se mueva al hacer scroll */
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
+}
+
+
+.logo-sidebar {
+  width: 45px;      /* Ajusta según el tamaño de tu logo */
+  height: 45px;     /* Ajusta según el tamaño de tu logo */
+  object-fit: contain;
+  border-radius: 15px; /* Opcional: si quieres bordes redondeados */
+}
+
+/* Efecto para que el texto y el logo se alineen perfecto */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Letras blancas y hover suave */
+.hover-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+.hover-white:hover {
+  color: #ffffff !important;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Cursor para elementos clickeables que no son enlaces */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Estilo para los badges en el sidebar */
+.badge {
+  letter-spacing: 0.5px;
+}
+.table th:first-child, .table td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+}
+
+/* Reduce el tamaño de toda la tabla */
+.mi-tabla-personalizada {
+    font-size: 13px;
+}
+
+/* Si quieres que el encabezado sea aún más pequeño o distinto */
+.mi-tabla-personalizada thead {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Si quieres que las celdas de datos tengan un tamaño específico */
+.mi-tabla-personalizada td {
+    font-size: 12px;
+}
+
+
+/* 1. Estructura General */
+.tabla-sioret {
+    width: 150%;
+    table-layout: fixed; /* IMPORTANTE: Hace que la tabla respete tus anchos de columna */
+    border-collapse: collapse;
+    font-size: 12px; /* Tamaño de letra global */
+}
+
+/* 2. Control de Celdas (Ancho, Alto y Espaciado) */
+.tabla-sioret th { text-align: center;       /* Aquí los centras */
+    background-color: #f8f9fa; /* Opcional: un color sutil para diferenciar */
+    font-weight: bold;
+  
+  padding: 20px 10px;      /* Controla el alto y aire interno de la celda */
+    border: 1px solid #dee2e69c;
+    overflow: hidden;       /* Evita que el contenido se salga */
+  }
+
+.tabla-sioret td {
+    padding: 1px 10px;      /* Controla el alto y aire interno de la celda */
+    border: 1px solid #dee2e6;
+    overflow: hidden;       /* Evita que el contenido se salga */
+    text-overflow: ellipsis;/* Pone "..." si el texto es muy largo */
+    white-space: nowrap;    /* Evita que el texto salte a otra línea */
+    vertical-align: middle; /* O 'top' / 'bottom' */
+    
+}
+
+/* 3. Colores y Encabezado */
+.tabla-sioret thead {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* 4. Efecto Hover (opcional) */
+.tabla-sioret tbody tr:hover {
+    background-color: #f1f4f986;
+}
+
+/* 1. VARIABLES GLOBALES (Configuración rápida) */
+:root {
+  --bg-dark: #070707;
+  --bg-light: #f8f9fa;
+  --primary: #92b91c;
+  --primary-hover: #92b91c;
+  --text-main: #2c3e50;
+  --text-muted: #6c757d;
+  --border-color: #dee2e6;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 8px;
+}
+
+/* 2. RESET & BASE */
+.App {
+  text-align: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+}
+
+/* 3. LAYOUT & HEADER */
+.App-header {
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
+  background: white; /* Asegura legibilidad */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+/* 4. COMPONENTES: NAVEGACIÓN Y LOGO */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo { animation: App-logo-spin infinite 20s linear; }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-sidebar {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* 5. INTERACCIONES (Hover y Estados) */
+.hover-link {
+  transition: var(--transition);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.hover-link:hover {
+  background-color: rgba(0, 123, 255, 0.1) !important;
+  color: var(--primary) !important;
+  transform: translateX(4px);
+}
+
+.cursor-pointer { cursor: pointer; }
+
+/* 6. TABLAS PROFESIONALES (Optimizado) */
+.table-container {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow-x: auto;
+}
+
+.tabla-sioret {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.tabla-sioret thead th {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 15px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-size: 11px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tabla-sioret td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.tabla-sioret tbody tr:hover {
+  background-color: rgba(0,0,0,0.02);
+}
+
+/* 7. UI ELEMENTS (Badges & Buttons) */
+.badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-success { background: #c3f136; color: #c3f136; }
+.badge-danger { background: #f8d7da; color: #ee4c6a; }
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+/* 8. ANIMACIONES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main { animation: fadeIn 0.6s ease-out; }
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #92b91c; /* Color profesional azul */
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+
+
+.transition-all { transition: all 0.3s ease; }
+.rotate-180 { transform: rotate(180deg); }
+.max-h-0 { max-height: 0; opacity: 0; }
+.max-h-500 { max-height: 500px; opacity: 1; }
+
+.hover-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff !important;
+}
+
+.hover-white:hover {
+  color: white !important;
+  padding-left: 8rem !important; /* Efecto de desplazamiento al pasar el mouse */
+}
+
+
+
+/* Agranda el icono y le da el color de marca cuando es una info */
+[data-sonner-toast][data-type="info"] [data-icon] {
+  color: #0dcaf0;
+  transform: scale(1.8);
+}
+
+/* Agranda todos los iconos de las alertas */
+[data-sonner-toast] [data-icon] {
+  transform: scale(1.9);
+  margin-right: 12px;
+}
+
+/* Títulos más fuertes */
+[data-sonner-toast] [data-title] {
+  font-weight: 1500;
+  letter-spacing: 1.5px;
+}
+
+/* Borde izquierdo del grupo (Columna Desayuno) */
+.borde-grupo-inicio {
+    border-left: 1px solid rgb(190, 190, 190) !important;
+    border-top: 1px solid rgb(190, 190, 190) !important;
+    border-bottom: 1px solid rgb(190, 190, 190) !important;
+}
+
+/* Solo borde superior e inferior (Almuerzo y Refrigerio) */
+.borde-grupo-medio {
+    border-top: 1px solid rgb(190, 190, 190) !important;
+    border-bottom: 1px solid rgb(121, 119, 119) !important;
+}
+
+/* Borde derecho del grupo (Columna Merienda) */
+.borde-grupo-fin {
+    border-right: 1px solid rgb(190, 190, 190) !important;
+    border-top: 1px solid rgb(190, 190, 190) !important;
+    border-bottom: 1px solid rgb(190, 190, 190) !important;
+}
+
+
+
+/* Contenedor de la celda */
+.td-editable {
+    padding: 2px 4px !important;
+    height: 35px;
+    vertical-align: middle;
+}
+
+/* El select profesional */
+.select-comedor {
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-radius: 2px;
+    font-size: 13px;
+    color: #161616;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    appearance: none; /* Quita la flecha por defecto en algunos navegadores */
+    padding: 0 1px;
+}
+
+/* Efecto al pasar el mouse */
+.select-comedor:hover:not(:disabled) {
+    border-color: rgb(180, 179, 179);
+    background-color: rgb(175, 174, 174);
+}
+
+/* Efecto cuando el select está activo o enfocado */
+.select-comedor:focus {
+    outline: none;
+    border-color: rgb(195, 229, 108);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgb(244, 244, 246);
+}
+
+/* Estilo para cuando no hay valor seleccionado */
+.select-placeholder {
+    color: #000000;
+    font-style: italic;
+}
+
+/* Cuando el periodo está bloqueado */
+.select-comedor:disabled {
+    cursor: not-allowed;
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+/* Estilo de las opciones */
+.select-comedor option {
+    color: #000000;
+    background-color: rgb(247, 234, 218);
+    font-style: normal;
+}
+
+
+.table-lime-dark {
+    background-color: #7bbe22 !important; /* Verde lima oscuro tipo bosque */
+    color: #f7fee7; /* Texto blanco con un toque de lima muy suave */
+}
+
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.animate-pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Agrega esto a tu archivo CSS global o dentro de una etiqueta <style> en tu index.html */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*Pra boton menu para ocultar*/
+
+/* Botón contenedor estilo SaaS */
+.sidebar-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgba(146, 185, 28, 0.05);
+  border: 1px solid rgba(146, 185, 28, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+/* Efectos Hover del botón */
+.sidebar-toggle-btn:hover {
+  background-color: #92b91c;
+  border-color: #92b91c;
+  box-shadow: 0 4px 12px rgba(146, 185, 28, 0.25);
+}
+
+/* Contenedor del ícono de líneas */
+.burger-icon {
+  width: 20px;
+  height: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Las 3 líneas individuales */
+.burger-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #92b91c;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+}
+
+/* Cambio de color de las líneas a blanco cuando el botón está en Hover */
+.sidebar-toggle-btn:hover .burger-icon span {
+  background-color: #ffffff;
+}
+
+/* ANIMACIONES CUANDO EL MENÚ ESTÁ ABIERTO (Transformación a X) */
+/* Línea Superior rota hacia abajo */
+.sidebar-toggle-btn.open .burger-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(1px, -1px);
+}
+
+/* Línea Central se desvanece y se encoge hacia la derecha */
+.sidebar-toggle-btn.open .burger-icon span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+/* Línea Inferior rota hacia arriba */
+.sidebar-toggle-btn.open .burger-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(1px, 1px);
+}
