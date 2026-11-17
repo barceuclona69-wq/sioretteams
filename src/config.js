@@ -1,32 +1,27 @@
-export const API_BASE_URL = process.env.REACT_APP_API_URL; 
-export const API_BASE_URL1 = process.env.REACT_APP_API_URL1;
-
+export const API_BASE_URL = process.env.REACT_APP_API_URL || ''; 
+export const API_BASE_URL1 = process.env.REACT_APP_API_URL_1 || '';
 
 // apiConfig.js
 const API_URLS = [
-  process.env.REACT_APP_API_URL,// URL 1
-  process.env.REACT_APP_API_URL_1  // URL 2
- 
+  process.env.REACT_APP_API_URL || '' // Usa ruta relativa al mismo servidor
 ];
 
 /**
- * Realiza una petición intentando primero con la URL primaria.
- * Si falla, reintenta automáticamente con la secundaria.
+ * Realiza una petición a la API en el mismo servidor (o usando variable de entorno si existe).
  */
 export async function fetchWithFallback(endpoint, options = {}) {
   for (const baseUrl of API_URLS) {
     try {
       const response = await fetch(`${baseUrl}${endpoint}`, {
         ...options,
-        signal: AbortSignal.timeout(3000) // Timeout de 9s para no esperar demasiado
+        signal: AbortSignal.timeout(30000) // 30s para dar tiempo a que Azure SQL despierte si estaba pausada
       });
       
-      if (!response.ok) throw new Error(`Error en ${baseUrl}`);
+      if (!response.ok) throw new Error(`Error en ${baseUrl || 'servidor'}`);
       return await response.json();
       
     } catch (error) {
-      console.warn(`Fallo en ${baseUrl}. Intentando siguiente...`);
-      // Si es el último intento, lanzamos el error definitivo
+      console.warn(`Fallo en ${baseUrl || 'servidor'}. Intentando siguiente...`);
       if (baseUrl === API_URLS[API_URLS.length - 1]) throw error;
     }
   }
