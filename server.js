@@ -11,6 +11,8 @@ const fs = require('fs');
 
 
 
+
+
 // Crear la carpeta física donde se guardarán los archivos si no existe
 const carpetaUploads = path.join(__dirname, 'uploads_justificantes');
 if (!fs.existsSync(carpetaUploads)) {
@@ -80,7 +82,13 @@ const configbfg_zkbiotime = {
         type: 'default',
         options: { userName: 'sa', password: 'amn110*' }
     },
-    options: { database: 'bfg_zkbiotime', encrypt: false, trustServerCertificate: true }
+    options: { 
+    database: process.env.DB_NAME, 
+    encrypt: true, 
+    trustServerCertificate: false,
+    useUTC: false 
+}
+
 };
 
 
