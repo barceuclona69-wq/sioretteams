@@ -90,22 +90,22 @@ const configbfg_zkbiotime = {
 
 
 const configdartis = {
-    user: 'mario', // Ejemplo: admin_dartis
+    user: 'mario',
     password: 'Bell@fl0r2024',
-    server: ipdartis,
+    server: 'dartisteam.database.windows.net',
     database: 'BELLAFLOR',
     options: {
-        encrypt: true, // OBLIGATORIO para Azure SQL [1]
+        encrypt: true,
         trustServerCertificate: false,
-        connectTimeout: 30000 // Aumenta el tiempo por si la red es lenta
-    }
+        connectTimeout: 30000
+	}
 }
 
 
 const configdartiscomer = {
     user: 'mario', // Ejemplo: admin_dartis
     password: 'Bell@fl0r2024',
-    server: ipdartis,
+    server: 'dartisteam.database.windows.net',
     database: 'BELLAFLORGROUP',
     options: {
         encrypt: true, // OBLIGATORIO para Azure SQL [1]
