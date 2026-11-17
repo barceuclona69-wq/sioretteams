@@ -54,7 +54,7 @@ const { Connection, Request, TYPES } = require('tedious');
 
 
 const config = {
-    server: ip,
+   server: process.env.DB_SERVER,
     authentication: {
         type: 'default',
         options: { userName: 'sa', password: 'amn110*' }
