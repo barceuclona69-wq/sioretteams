@@ -90,10 +90,10 @@ const configbfg_zkbiotime = {
 
 
 const configdartis = {
-    user: 'mario',
-    password: 'Bell@fl0r2024',
-    server: 'dartisteam.database.windows.net',
-    database: 'BELLAFLOR',
+    user: process.env.DB_DARTIS_USER,
+    password: process.env.DB_DARTIS_PASSWORD,
+    server: process.env.DB_DARTIS_SERVER,
+    database: process.env.DB_DARTIS_NAME,
     options: {
         encrypt: true,
         trustServerCertificate: false,
