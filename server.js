@@ -54,19 +54,22 @@ const { Connection, Request, TYPES } = require('tedious');
 
 
 const config = {
-   server: process.env.DB_SERVER,
+    server: process.env.DB_SERVER,
     authentication: {
         type: 'default',
-        options: { userName: 'sa', password: 'amn110*' }
+        options: { 
+            userName: process.env.DB_USER, 
+            password: process.env.DB_PASSWORD 
+        }
     },
     options: { 
-        database: 'FLOWERSHOP', 
-        encrypt: false, 
-        trustServerCertificate: true,
-        // 🌟 LÍNEA NUEVA: Desactiva UTC para guardar la hora exacta sin desfases
+        database: process.env.DB_NAME, 
+        encrypt: true, 
+        trustServerCertificate: false,
         useUTC: false 
     }
 };
+
 
 //DB RELOJ
 const configbfg_zkbiotime = {
