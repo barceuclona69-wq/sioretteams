@@ -8,14 +8,15 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+
+
+
 // Crear la carpeta física donde se guardarán los archivos si no existe
 const carpetaUploads = path.join(__dirname, 'uploads_justificantes');
 if (!fs.existsSync(carpetaUploads)) {
     fs.mkdirSync(carpetaUploads, { recursive: true });
 }
 
-ip = '192.168.0.253';
-ipdartis = 'dartisteam.database.windows.net';
 
 
 app.use(cors());
@@ -10207,10 +10208,29 @@ app.put('/api/SISTEMA/usuario_web/:id', async (req, res) => {
 });
 
 
+// Configuración de conexión a SQL Server en Azure
+const dbConfig = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER, // Ejemplo: sioretteams.database.windows.net
+  database: process.env.DB_NAME, // FLOWERSHOP
+  options: {
+    encrypt: true, // Obligatorio para Azure SQL
+    trustServerCertificate: false
+  }
+};
 
 
 
-// Arranca el servidor
-app.listen(4000, () => {
-    console.log('Servidor API SIORET corriendo en ${API_BASE_URL }',);
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Cualquier otra ruta devuelve el index.html de React
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// Arrancar el servidor usando el puerto dinámico de Azure (sin IP fija)
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
