@@ -10230,7 +10230,7 @@ const dbConfig = {
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Cualquier otra ruta devuelve el index.html de React
-app.get('*', (req, res) => {
+app.get('/{*splat}', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
