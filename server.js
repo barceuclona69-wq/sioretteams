@@ -65,6 +65,7 @@ const config = {
     options: { 
         database: process.env.DB_NAME, 
         encrypt: true, 
+		
         trustServerCertificate: false,
         useUTC: false 
     }
@@ -73,7 +74,8 @@ const config = {
 
 //DB RELOJ
 const configbfg_zkbiotime = {
-    server: ip,
+ server: process.env.DB_SERVER,
+
     authentication: {
         type: 'default',
         options: { userName: 'sa', password: 'amn110*' }
