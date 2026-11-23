@@ -132,27 +132,29 @@ const pooldartiscomer = new sql.ConnectionPool(configdartiscomer);
 const poolbiometrico = new sql.ConnectionPool(configbfg_zkbiotime);
 
 
+async function connectDBs() { 
+  try { 
+    await poolflowershop.connect(); 
+    console.log('✅ Flowershop Azure conectada'); 
+    
+    await pooldartis.connect(); 
+    console.log('✅ Dartis Azure conectada FINCAS'); 
+    
+    await pooldartiscomer.connect(); 
+    console.log('✅ Dartis Azure conectada COMERCIALIZADORA'); 
+  } catch (err) { 
+    console.error('❌ Error crítico de conexión en Azure:', err); 
+  }
 
-async function connectDBs() {
-    try {
-
-        
-
-        await poolflowershop.connect();
-        console.log('✅ Flowershop Local conectada');
-        
-        await pooldartis.connect();
-        console.log('✅ Dartis Azure conectada FINCAS');
-
-        await pooldartiscomer.connect();
-        console.log('✅ Dartis Azure conectada COMERCIALIZADORA');
-
-        await poolbiometrico.connect();
-        console.log('✅ Biométrico Local conectada');
-    } catch (err) {
-        console.error('❌ Error crítico de conexión:', err);
-    }
+  // Conexión opcional del biométrico aislada para que no bloquee el sistema
+  try {
+    await poolbiometrico.connect(); 
+    console.log('✅ Biométrico conectada'); 
+  } catch (err) {
+    console.warn('⚠️ Biométrico no disponible desde Azure:', err.message);
+  }
 }
+
 
 // IMPORTANTE: Escucha errores individuales de cada pool para evitar desconexiones silenciosas
 poolflowershop.on('error', err => console.error('Error en Pool Flowershop:', err));
